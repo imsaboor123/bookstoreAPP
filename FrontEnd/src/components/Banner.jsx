@@ -16,7 +16,7 @@ function Banner() {
   <input type="text" className="grow" placeholder="Email" />
 </label>
         </div> 
-        <button className="btn btn-secondary mt-5   ">Secondary</button>   
+        <button className="btn btn-secondary mt-5   ">Get started</button>   
 
         </div>
          <div className="Right mt-28 md:mt-10 order-1 w-full md:w-1/2 ">

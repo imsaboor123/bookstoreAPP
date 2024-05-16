@@ -1,10 +1,28 @@
-import React from 'react'
-import list from '../../public/list.json';
+import React, { useEffect, useState } from 'react'
 import Card from './Card';
+import axios from 'axios';
 
 function Cource() {
-    const paidData = list.filter((data)=> data.category === "Paid");
-    console.log(paidData)
+    
+    const [book,setBook]=useState([])
+    useEffect(() => {
+      const getBook = async ()=>{
+        try {
+          const res = await axios.get("http://localhost:4000/book");
+          console.log(res.data)
+          setBook(res.data);
+        } catch (error) {
+          console.log(error)
+        }
+
+      };
+      getBook();
+      
+    }, [])
+     const paidData = book.filter((data)=> data.category === "Paid");
+    
+    
+        
   return (
     <>
      <div className="max-w-screen-2xl mt-32  dark:bg-slate-900 dark:text-white  container mx-auto md:px-15 px-4">
@@ -18,7 +36,7 @@ function Cource() {
      </div>
      <div className=' grid grid-cols-1 md:grid-cols-4'>
      {paidData.map((item)=>{
-       return <Card key={item.category=== "paid"} item={item}/>
+       return <Card key={item.id} item={item}/>
      })}
      </div>
 
